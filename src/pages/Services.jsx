@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { RiStarSFill } from "react-icons/ri";
-const Popular = () => {
+const Services = () => {
     const [services, setServices] = useState([]);
 
     useEffect(() => {
@@ -15,11 +15,11 @@ const Popular = () => {
     return (
         <div>
             <h2 className='text-3xl font-bold text-black text-center mt-4'>
-                Popular Winter Care Services
+                Our All Services
             </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-6 p-6 container mx-auto">
-                {services.slice(0,3).map(service => (
+                {services.map(service => (
                     <div
                         key={service.serviceId}
                         className="card p-4 bg-base-100 shadow-md rounded-xl hover:shadow-xl transition-all duration-300"
@@ -56,4 +56,4 @@ const Popular = () => {
     );
 };
 
-export default Popular;
+export default Services;
