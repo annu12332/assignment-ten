@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useAuth } from "../AuthProvider"; // যদি AuthProvider.jsx এক level উপরে থাকে
+import { useAuth } from "../AuthProvider";
 
 const Signup = () => {
   const { registerWithEmailPassword } = useAuth();
@@ -8,14 +8,14 @@ const Signup = () => {
   const [error, setError] = useState("");
 
   const handleSignup = async (e) => {
-    e.preventDefault(); // page reload বন্ধ করার জন্য
+    e.preventDefault(); 
     setError("");
 
     try {
       const userCredential = await registerWithEmailPassword(email, password);
       console.log("User created:", userCredential.user);
       alert("Account created successfully!");
-      // এখানে চাইলে redirect করতে পারো
+     
     } catch (err) {
       console.error(err);
       setError(err.message);
