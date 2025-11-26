@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { RiStarSFill } from "react-icons/ri";
+import { Link } from 'react-router';
 const Services = () => {
     const [services, setServices] = useState([]);
 
@@ -44,7 +45,7 @@ const Services = () => {
                                  <div className='flex items-center bg-amber-200 rounded-full p-1'><span className="">Rating: {service.rating} </span><RiStarSFill /></div>
                                  <h4 className='font-bold bg-green-300 rounded-full p-1 mt-1'>Price: {service.price}$</h4>
                                </div>
-                                <button className="bg-blue-700 p-3 rounded-2xl text-lg font-semibold text-white">View Details</button>
+                                <Link to={`/services/${service.id}`} className="bg-blue-700 p-3 rounded-2xl text-lg font-semibold text-white">View Details</Link>
                             </div>
                         </div>
                     </div>

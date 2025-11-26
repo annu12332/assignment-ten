@@ -1,12 +1,16 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import router from './router/Routes.jsx'
-import { RouterProvider } from "react-router/dom";
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { RouterProvider } from "react-router";
+import { Toaster } from "react-hot-toast";
+import router from "./router/Routes";
+import AuthProvider from "./AuthProvider";
 import './index.css'
-import App from './App.jsx'
 
-createRoot(document.getElementById('root')).render(
-  <StrictMode>
-  <RouterProvider router={router} />,
-  </StrictMode>,
-)
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <React.StrictMode>
+    <AuthProvider>
+      <RouterProvider router={router} />
+      <Toaster />
+    </AuthProvider>
+  </React.StrictMode>
+);
