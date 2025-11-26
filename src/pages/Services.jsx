@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { RiStarSFill } from "react-icons/ri";
-import { Link } from "react-router"; // react-router-dom ব্যবহার করুন
+import { Link } from "react-router"; 
 const Services = () => {
   const [services, setServices] = useState([]);
 

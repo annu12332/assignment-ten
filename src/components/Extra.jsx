@@ -9,7 +9,7 @@ const Extra = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 
-                {/* CARD 1 */}
+                
                 <div className="card bg-base-100 shadow-sm">
                     <div className="card-body">
                         <h2 className="text-2xl font-bold">❄️ Health & Safety Care</h2>
@@ -22,7 +22,7 @@ const Extra = () => {
                     </div>
                 </div>
 
-                {/* CARD 2 */}
+                
                 <div className="card bg-base-100 shadow-sm">
                     <div className="card-body">
                         <h2 className="text-2xl font-bold">🏡 Indoor Comfort & Environment</h2>
@@ -35,7 +35,7 @@ const Extra = () => {
                     </div>
                 </div>
 
-                {/* CARD 3 */}
+                
                 <div className="card bg-base-100 shadow-sm">
                     <div className="card-body">
                         <h2 className="text-2xl font-bold">🌨️ Outdoor Precautions</h2>
@@ -50,14 +50,14 @@ const Extra = () => {
 
             </div>
 
-            {/* VET SECTION */}
+           
             <h3 className="text-3xl font-bold text-center mt-10 mb-6">
                 Meet Our Expert Vets
             </h3>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 
-                {/* VET CARD 1 */}
+              
                 <div className="card bg-blue-100 shadow-lg hover:bg-blue-300 ">
                     <div className="card-body">
                         <h2 className="text-2xl font-bold">Dr. Ayesha Rahman</h2>

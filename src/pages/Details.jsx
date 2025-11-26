@@ -26,7 +26,7 @@ const ServiceDetails = () => {
 
   return (
     <div className="max-w-md mx-auto mt-10 p-6 bg-gray-100 rounded shadow">
-      {/* Service Card */}
+      
       <div className="p-4 shadow rounded bg-white mb-4">
         <h2 className="text-3xl font-bold mb-2 mt-6 text-black">{service.serviceName}</h2>
         <p className="text-gray-700 mb-2">{service.description}</p>
@@ -39,7 +39,7 @@ const ServiceDetails = () => {
         </button>
       </div>
 
-      {/* Booking Form */}
+      
       {showForm && (
         <form onSubmit={handleSubmit} className="flex flex-col gap-3">
           <input

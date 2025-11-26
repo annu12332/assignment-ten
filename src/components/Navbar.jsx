@@ -58,12 +58,12 @@ const Navbar = () => {
             </ul>
           </div>
 
-          <a className="font-bold text-yellow-600 text-2xl shadow-amber-700 shadow-2xl">
-            PetsCare
+          <a className="font-bold text-blue-700 text-2xl">
+            Pa<span className="text-red-600">wP</span>aw
           </a>
         </div>
 
-        {/* Navbar Center */}
+        
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1 font-bold">
             <li>

@@ -9,42 +9,44 @@ import Signup from "../pages/Signup";
 import Profile from "../pages/Profile";
 
 const router = createBrowserRouter([
-{
-    path: "/",
-    element: <Root/>,
-    children:[
-        { index: true,
-         element: <Home /> },
-        {
-            path:'/home',
-            element:<Home/>
-        },
-        {
-            path:"/services",
-            element:<Services/>,
-        },
-        {
-            path:"/services/:id",
-            element: (
-                <PrivateRoute>
-                    <Details/>
-                </PrivateRoute>
-            )
-        },
-        {
-            path:"/login",
-            element: <Login/>,
-        },
-        {
-            path:"/signup",
-            element: <Signup/>
-        },
-        {
-            path:"/profile",
-            element: <Profile/>
-        }
-    ]
-},
+    {
+        path: "/",
+        element: <Root />,
+        children: [
+            {
+                index: true,
+                element: <Home />
+            },
+            {
+                path: '/home',
+                element: <Home />
+            },
+            {
+                path: "/services",
+                element: <Services />,
+            },
+            {
+                path: "/services/:id",
+                element: (
+                    <PrivateRoute>
+                        <Details />
+                    </PrivateRoute>
+                )
+            },
+            {
+                path: "/login",
+                element: <Login />,
+            },
+            {
+                path: "/signup",
+                element: <Signup />
+            },
+            {
+                path: "/profile",
+                element: <Profile />
+            }
+        ]
+    },
 
 ]);
 

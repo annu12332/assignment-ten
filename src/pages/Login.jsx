@@ -3,7 +3,7 @@ import { useNavigate, useLocation, Link } from "react-router";
 import { signInWithEmailAndPassword, signInWithPopup, sendPasswordResetEmail } from "firebase/auth";
 import { auth, googleProvider } from "../firebase/firebase.config";
 import { toast } from "react-hot-toast";
-
+import { FcGoogle } from "react-icons/fc";
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -69,7 +69,7 @@ export default function Login() {
         </button>
 
         <button onClick={handleGoogleLogin} className="btn btn-outline w-full mb-2">
-          Login with Google
+          <FcGoogle />Login with Google
         </button>
 
         <button

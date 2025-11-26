@@ -1,4 +1,4 @@
-import { 
+import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
@@ -27,24 +27,24 @@ const AuthProvider = ({ children }) => {
     return signInWithEmailAndPassword(auth, email, pass);
   };
 
-  
+
   const logout = () => {
     setLoading(true);
     return signOut(auth);
   };
 
-  
+
   const updateProfile = async (profileData) => {
     if (auth.currentUser) {
       await firebaseUpdateProfile(auth.currentUser, profileData);
-      
+
       setUser({ ...auth.currentUser });
     } else {
       throw new Error("No user is logged in");
     }
   };
 
-  // TRACK USER LOGIN STATE
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
@@ -54,14 +54,14 @@ const AuthProvider = ({ children }) => {
     return () => unsubscribe();
   }, []);
 
-  // Auth data for context
+
   const authData = {
     user,
     loading,
     registerWithEmailPassword,
     loginWithEmailPassword,
     logout,
-    updateProfile, 
+    updateProfile,
   };
 
   return (
@@ -73,5 +73,5 @@ const AuthProvider = ({ children }) => {
 
 export default AuthProvider;
 
-// Custom hook to use auth
+
 export const useAuth = () => useContext(Authcontext);
