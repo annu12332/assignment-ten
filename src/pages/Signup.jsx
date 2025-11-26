@@ -23,8 +23,8 @@ const Signup = () => {
   };
 
   return (
-    <div className="signup-container">
-      <h2>Signup</h2>
+    <div className="signup-container ">
+      <h2 className="text-2xl font-bold text-center text-blue-700">Signup</h2>
       <form onSubmit={handleSignup}>
         <input
           type="email"
