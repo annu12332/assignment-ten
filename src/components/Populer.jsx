@@ -5,7 +5,7 @@ const Popular = () => {
     const [services, setServices] = useState([]);
 
     useEffect(() => {
-        fetch('services.json')
+        fetch('http://localhost:3000/services')
             .then(res => res.json())
             .then(data => setServices(data))
             .catch(err => console.log(err));
@@ -28,13 +28,13 @@ const Popular = () => {
                         <figure className="w-full">
                             <img
                                 src={service.image}
-                                alt={service.serviceName}
+                                alt={service.name}
                                 className=" w-full h-64 object-cover rounded-t-xl"
                             />
                         </figure>
 
                         <div className="p-4 flex flex-col gap-2">
-                            <h2 className="text-lg font-bold">{service.serviceName}</h2>
+                            <h2 className="text-lg font-bold">{service.name}</h2>
 
                             <p className="text-sm text-gray-500 leading-relaxed">
                                 {service.description}
@@ -46,7 +46,7 @@ const Popular = () => {
                                     <h4 className='font-bold bg-green-300 rounded-full p-1 mt-1'>Price: {service.price}$</h4>
                                 </div>
                                 <Link
-                                    to={`/services/${service.serviceId}`}
+                                    to={`/services/${service.Id}`}
                                     state={{ service }}
                                     className="bg-blue-700 p-3 rounded-2xl text-lg font-semibold text-white hover:bg-blue-800 transition-colors"
                                 >
