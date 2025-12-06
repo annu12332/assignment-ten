@@ -8,6 +8,7 @@ import Login from "../pages/Login";
 import Signup from "../pages/Signup";
 import Profile from "../pages/Profile";
 import Add from "../pages/Add";
+import MyAds from "../pages/MyAds";
 
 const router = createBrowserRouter([
     {
@@ -49,6 +50,10 @@ const router = createBrowserRouter([
              {
                 path: "/addservices",
                 element: <Add/>
+            },
+            {
+                path: "/myads",
+                element: <MyAds/>
             }
         ]
     },

@@ -79,6 +79,9 @@ const Navbar = () => {
               <Link to="/addservices">Add-Services</Link>
             </li>
             <li>
+              <Link to="/myads">My Ads</Link>
+            </li>
+            <li>
               <button
                 onClick={handleProfileClick}
                 className="flex items-center gap-2"
