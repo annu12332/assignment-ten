@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Authcontext } from '../AuthProvider';
-
+import { Link } from 'react-router';
 const MyAds = () => {
 
     const [myAds, setMyAds] = useState([]);
@@ -60,7 +60,7 @@ const MyAds = () => {
                                 <td>{ads?.price }</td>
 
                                 <th className='flex gap-2 '>
-                                    <button className="btn font-bold btn-info btn-xs">Edit</button>
+                                    <Link to ={`/updatelisting/${ads?._id}`}><button className="btn font-bold btn-info btn-xs">Edit</button></Link>
                                     <button className="btn btn-error font-bold btn-xs">Delete</button>
                                 </th>
 

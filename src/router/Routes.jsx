@@ -9,6 +9,7 @@ import Signup from "../pages/Signup";
 import Profile from "../pages/Profile";
 import Add from "../pages/Add";
 import MyAds from "../pages/MyAds";
+import UpdateListing from "../pages/UpdateListing";
 
 const router = createBrowserRouter([
     {
@@ -54,6 +55,10 @@ const router = createBrowserRouter([
             {
                 path: "/myads",
                 element: <MyAds/>
+            },
+            {
+                path: "/updatelisting/:id",
+                element: <UpdateListing/>
             }
         ]
     },
