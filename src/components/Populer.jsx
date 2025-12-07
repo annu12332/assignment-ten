@@ -5,7 +5,7 @@ const Popular = () => {
     const [services, setServices] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:3000/services')
+        fetch('http://localhost:3000/services?homePageLimit=6')
             .then(res => res.json())
             .then(data => setServices(data))
             .catch(err => console.log(err));
@@ -16,11 +16,11 @@ const Popular = () => {
     return (
         <div>
             <h2 className='text-3xl font-bold text-black text-center mt-4'>
-                Popular Winter Care Services
+                Recent Listings
             </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-6 p-6 container mx-auto">
-                {services.slice(0, 3).map(service => (
+                {services.map(service => (
                     <div
                         key={service.serviceId}
                         className="card p-4 bg-base-100 shadow-md rounded-xl hover:shadow-xl transition-all duration-300"
@@ -37,18 +37,18 @@ const Popular = () => {
                             <h2 className="text-lg font-bold">{service.name}</h2>
 
                             <p className="text-sm text-gray-500 leading-relaxed">
-                                {service.description}
+                               Location: {service.location}
                             </p>
 
                             <div className="flex justify-between items-center mt-3">
-                                <div>
-                                    <div className='flex items-center bg-amber-200 rounded-full p-1'><span className="">Rating: {service.rating} </span><RiStarSFill /></div>
-                                    <h4 className='font-bold bg-green-300 rounded-full p-1 mt-1'>Price: {service.price}$</h4>
+                                <div >
+                                    <div className='flex items-center bg-amber-200 rounded-md px-3'><span className="">{service.category} </span></div>
+                                    <h4 className='font-bold bg-green-300 rounded-md px-3 mt-1'> {service.price}$</h4>
                                 </div>
                                 <Link
                                     to={`/services/${service.Id}`}
                                     state={{ service }}
-                                    className="bg-blue-700 p-3 rounded-2xl text-lg font-semibold text-white hover:bg-blue-800 transition-colors"
+                                    className="bg-blue-700 px-3 py-3 rounded-2xl text-lg font-semibold text-white hover:bg-blue-800 transition-colors"
                                 >
                                     View Details
                                 </Link>

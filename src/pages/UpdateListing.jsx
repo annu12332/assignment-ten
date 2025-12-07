@@ -14,11 +14,15 @@ const UpdateListing = () => {
         axios.get(`http://localhost:3000/services/${id}`)
             .then(res => {
                 const data = res.data;
-                
+
+
                 if (data.date) {
                     const d = new Date(data.date);
-                    data.date = d.toISOString().split('T')[0]; // YYYY-MM-DD
+                    if (!isNaN(d)) {
+                        data.date = d.toISOString().split("T")[0];
+                    }
                 }
+
                 setService(data);
                 setCategory(data.category);
             })
@@ -29,6 +33,7 @@ const UpdateListing = () => {
         e.preventDefault();
 
         const form = e.target;
+
         const updatedData = {
             name: form.name.value,
             category: form.category.value,
@@ -37,24 +42,25 @@ const UpdateListing = () => {
             description: form.description.value,
             image: form.image.value,
             date: form.date.value,
-            email: user?.email
+            email: form.email.value,
+            createdAt: service?.createdAt
+
         };
 
         axios.put(`http://localhost:3000/services/${id}`, updatedData)
             .then(res => {
                 console.log('Updated successfully', res.data);
-                setCategory(res.data.category)
                 alert('Listing updated successfully!');
             })
             .catch(err => console.log(err));
-    }
+    };
 
     return (
         <div className="max-w-xl mx-auto p-6 bg-white rounded-xl shadow">
             <h2 className="text-2xl font-bold mb-4 text-center">Update Listing</h2>
 
             <form onSubmit={handleUpdate} className="space-y-4">
-                
+
                 <div>
                     <label className="font-semibold">Product/Pet Name</label>
                     <input
@@ -66,7 +72,6 @@ const UpdateListing = () => {
                     />
                 </div>
 
-                
                 <div>
                     <label className="font-semibold">Category</label>
                     <select
@@ -84,7 +89,6 @@ const UpdateListing = () => {
                     </select>
                 </div>
 
-                
                 <div>
                     <label className="font-semibold">Price</label>
                     <input
@@ -96,7 +100,6 @@ const UpdateListing = () => {
                     />
                 </div>
 
-                
                 <div>
                     <label className="font-semibold">Location</label>
                     <input
@@ -108,7 +111,6 @@ const UpdateListing = () => {
                     />
                 </div>
 
-                
                 <div>
                     <label className="font-semibold">Description</label>
                     <textarea
@@ -120,7 +122,6 @@ const UpdateListing = () => {
                     ></textarea>
                 </div>
 
-                
                 <div>
                     <label className="font-semibold">Image URL</label>
                     <input
@@ -132,19 +133,18 @@ const UpdateListing = () => {
                     />
                 </div>
 
-                
                 <div>
                     <label className="font-semibold">Date (Pick Up)</label>
                     <input
                         type="date"
                         name="date"
-                        defaultValue={service?.date || ""}
+                        defaultValue={service?.date}
+                        onChange={(e) => setService({ ...(service || {}), date: e.target.value })}
                         required
                         className="w-full border p-2 rounded"
                     />
                 </div>
 
-                
                 <div>
                     <label className="font-semibold">Email</label>
                     <input

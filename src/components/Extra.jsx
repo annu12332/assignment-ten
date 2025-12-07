@@ -4,7 +4,7 @@ const Extra = () => {
     return (
         <div className="p-6">
             <h3 className="text-3xl font-bold text-center mb-6">
-                Winter Care Tips for Pets
+                Why Adopt from PawMart?
             </h3>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -12,12 +12,11 @@ const Extra = () => {
                 
                 <div className="card bg-base-100 shadow-sm">
                     <div className="card-body">
-                        <h2 className="text-2xl font-bold">❄️ Health & Safety Care</h2>
-                        <ul className="mt-6 flex flex-col gap-2 text-sm font-semibold">
-                            <li>✔ Keep them warm</li>
-                            <li>✔ Winter nutrition</li>
-                            <li>✔ Protect paws</li>
-                            <li>✔ Regular vet checkups</li>
+                        
+                        <ul className="mt-6 flex flex-col gap-2 text-xl font-semibold">
+                            <li>✔ At PawMart, we believe every animal deserves a second chance.</li>
+                          
+                            
                         </ul>
                     </div>
                 </div>
@@ -25,12 +24,10 @@ const Extra = () => {
                 
                 <div className="card bg-base-100 shadow-sm">
                     <div className="card-body">
-                        <h2 className="text-2xl font-bold">🏡 Indoor Comfort & Environment</h2>
-                        <ul className="mt-6 flex flex-col gap-2 text-sm font-semibold">
-                            <li>✔ Warm sleeping area</li>
-                            <li>✔ Humidify the room</li>
-                            <li>✔ Safe indoor play</li>
-                            <li>✔ Grooming routine</li>
+                        
+                        <ul className="mt-6 flex flex-col gap-2 text-xl font-semibold">
+                            <li>✔ When you adopt, you don’t just bring home a pet — you save a life.</li>
+                            
                         </ul>
                     </div>
                 </div>
@@ -38,12 +35,10 @@ const Extra = () => {
                 
                 <div className="card bg-base-100 shadow-sm">
                     <div className="card-body">
-                        <h2 className="text-2xl font-bold">🌨️ Outdoor Precautions</h2>
-                        <ul className="mt-6 flex flex-col gap-2 text-sm font-semibold">
-                            <li>✔ Proper winter clothing</li>
-                            <li>✔ Limit outdoor time</li>
-                            <li>✔ Avoid slippery surfaces</li>
-                            <li>✔ Night safety</li>
+                        
+                        <ul className="mt-6 flex flex-col gap-2 text-xl font-semibold">
+                            <li>✔ Adopt from PawMart and give a furry friend the home, love, and future they truly deserve.</li>
+                          
                         </ul>
                     </div>
                 </div>
@@ -52,7 +47,7 @@ const Extra = () => {
 
            
             <h3 className="text-3xl font-bold text-center mt-10 mb-6">
-                Meet Our Expert Vets
+                Meet Our Pet Heroes
             </h3>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -60,12 +55,12 @@ const Extra = () => {
               
                 <div className="card bg-blue-100 shadow-lg hover:bg-blue-300 ">
                     <div className="card-body">
-                        <h2 className="text-2xl font-bold">Dr. Ayesha Rahman</h2>
+                        <h2 className="text-2xl font-bold">Daniel Reyes</h2>
                         <ul className="mt-6 flex flex-col gap-2 text-sm font-semibold">
-                            <li>Specialty: Small Animal Medicine & Dermatology</li>
-                            <li>Experience: 12+ years</li>
-                            <li>Clinic: PetWell Care Hospital, Dhaka</li>
-                            <li>Contact: +880-1780-445512</li>
+                            <li>Adopted: Milo (Tabby Cat)</li>
+                            <li>Location: San Diego, California</li>
+                            <li>Story: Daniel was looking for a calm indoor pet. Milo had spent months in the shelter waiting for adoption. Now he enjoys sunny window naps and cuddles while Daniel works on his laptop. A perfect rescue success story.</li>
+                            
                         </ul>
                     </div>
                 </div>
@@ -73,12 +68,12 @@ const Extra = () => {
                 <div>
                     <div className="card bg-yellow-100 shadow-lg hover:bg-yellow-300">
                     <div className="card-body">
-                        <h2 className="text-2xl font-bold">Dr. Tanvir Chowdhury</h2>
+                        <h2 className="text-2xl font-bold">Priya Sharma</h2>
                         <ul className="mt-6 flex flex-col gap-2 text-sm font-semibold">
-                            <li>Specialty: Surgery & Orthopedics</li>
-                            <li>Experience: 15+ years</li>
-                            <li>Clinic: Animal Health & Surgery Center, Chattogram</li>
-                            <li>Contact: +880-1912-887764</li>
+                            <li>Adopted: Adopted Coco</li>
+                            <li>Location: San Diego, California</li>
+                            <li>story: Priya wanted her daughter to grow up with a furry friend. Coco, a playful and smart mixed-breed puppy rescued from the streets, quickly became part of their family. Priya loves how Coco brings joy and energy to their home every day.</li>
+                           
                         </ul>
                     </div>
                 </div>
@@ -87,12 +82,12 @@ const Extra = () => {
                 <div>
                     <div className="card bg-red-100 shadow-lg hover:bg-red-300">
                     <div className="card-body">
-                        <h2 className="text-2xl font-bold">Dr. Nabila Hassan</h2>
+                        <h2 className="text-2xl font-bold">Sarah Thompson</h2>
                         <ul className="mt-6 flex flex-col gap-2 text-sm font-semibold">
-                            <li>Specialty: Emergency & Critical Care</li>
-                            <li>Experience: 10+ years</li>
-                            <li>Clinic: VetPoint Emergency Clinic, Sylhet</li>
-                            <li>Contact: +880-1307-667421</li>
+                            <li>Adopted: Bella (Golden Retriever)</li>
+                            <li>Location: Location: Austin, Texas</li>
+                            <li>Story:Story: Sarah wanted a companion to help cope with working from home. Bella, a gentle Golden Retriever rescued from abandonment, became her perfect match. Now they go on morning jogs together, and Bella has found a loving forever home.</li>
+                            
                         </ul>
                     </div>
                 </div>

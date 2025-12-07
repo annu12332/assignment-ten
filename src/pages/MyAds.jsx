@@ -1,6 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Authcontext } from '../AuthProvider';
 import { Link } from 'react-router';
+import axios from 'axios';
+import { Result } from 'postcss';
 const MyAds = () => {
 
     const [myAds, setMyAds] = useState([]);
@@ -15,6 +17,16 @@ const MyAds = () => {
             .catch(err => console.log(err));
 
     }, [user?.email]);
+
+    const handleDelete = (id)=>{
+        axios.delete(`http://localhost:3000/delete/${id}`)
+        .then(res=>{
+            console.log(res);
+
+            const filterData = myAds.filter(ads=> ads._id != id)
+            setMyAds(filterData)
+        })
+    }
 
     return (
         <div>
@@ -61,7 +73,7 @@ const MyAds = () => {
 
                                 <th className='flex gap-2 '>
                                     <Link to ={`/updatelisting/${ads?._id}`}><button className="btn font-bold btn-info btn-xs">Edit</button></Link>
-                                    <button className="btn btn-error font-bold btn-xs">Delete</button>
+                                    <button onClick={()=>handleDelete(ads?._id)} className="btn btn-error font-bold btn-xs">Delete</button>
                                 </th>
 
                             </tr>

@@ -10,6 +10,8 @@ import Profile from "../pages/Profile";
 import Add from "../pages/Add";
 import MyAds from "../pages/MyAds";
 import UpdateListing from "../pages/UpdateListing";
+import MyOrders from "../pages/MyOrders";
+import Terms from "../pages/Terms";
 
 const router = createBrowserRouter([
     {
@@ -50,15 +52,29 @@ const router = createBrowserRouter([
             },
              {
                 path: "/addservices",
-                element: <Add/>
+                element:(
+                    <PrivateRoute><Add/></PrivateRoute>
+                )
             },
             {
                 path: "/myads",
-                element: <MyAds/>
+                element:(<PrivateRoute><MyAds/></PrivateRoute>)
             },
             {
                 path: "/updatelisting/:id",
                 element: <UpdateListing/>
+            },
+            {
+                path: "/my-orders",
+                element: (
+                    <PrivateRoute>
+                        <MyOrders />
+                    </PrivateRoute>
+                )
+            },
+            {
+                path: "/terms",
+                element: <Terms/>
             }
         ]
     },

@@ -6,10 +6,10 @@ const Navbar = () => {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
 
- 
+
   const handleProfileClick = () => {
     if (user) {
-      navigate("/profile"); 
+      navigate("/profile");
     } else {
       navigate("/login");
     }
@@ -18,7 +18,7 @@ const Navbar = () => {
   return (
     <div>
       <div className="navbar bg-base-100 shadow-sm">
-        
+
         <div className="navbar-start">
           <div className="dropdown">
             <div
@@ -50,43 +50,69 @@ const Navbar = () => {
                 <Link to="/home">Home</Link>
               </li>
               <li>
-                <Link to="/services">Services</Link>
+                <Link to="/services">Pets & Supplies</Link>
               </li>
+             {
+              user && (
+                <>
+                 
               <li>
-                <button onClick={handleProfileClick}>My Profile</button>
+                <Link to="/addservices">Add Listing</Link>
               </li>
-              <li>
-                <Link to="/addservices">Add-Services</Link>
-              </li>
+               <li>
+                    <Link to="/myads">My Listing</Link>
+                  </li>
+                  <li>
+                    <Link to="/my-orders">My orders</Link>
+                  </li>
+                  </>
+              )
+             }
             </ul>
           </div>
 
           <a className="font-bold text-blue-700 text-2xl">
-            Pa<span className="text-red-600">wP</span>aw
+            Pa<span className="text-red-600">wM</span>art
           </a>
         </div>
 
-        
+
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1 font-bold">
             <li>
               <Link to="/home">Home</Link>
             </li>
             <li>
-              <Link to="/services">Services</Link>
+              <Link to="/services">Pets & Supplies</Link>
             </li>
-            <li>
-              <Link to="/addservices">Add-Services</Link>
+            {
+              user && (
+                <>
+                  <li>
+                    <Link to="/addservices">Add Listing</Link>
+                  </li>
+                  <li>
+                    <Link to="/myads">My Listing</Link>
+                  </li>
+                   <li>
+                    <Link to="/my-orders">My orders</Link>
+                  </li>
+
+                  <li>
+              
             </li>
-            <li>
-              <Link to="/myads">My Ads</Link>
-            </li>
-            <li>
-              <button
-                onClick={handleProfileClick}
-                className="flex items-center gap-2"
-              >
-                {user?.photoURL ? (
+                </>
+              )
+            }
+            
+          </ul>
+        </div>
+
+
+        <div className="navbar-end">
+          {user ? (
+            <button onClick={logout} className="btn btn-error text-white">
+              {user?.photoURL ? (
                   <img
                     src={user.photoURL}
                     alt="Profile"
@@ -95,16 +121,6 @@ const Navbar = () => {
                 ) : (
                   <div className="w-6 h-6 bg-gray-300 rounded-full"></div>
                 )}
-                My Profile
-              </button>
-            </li>
-          </ul>
-        </div>
-
-       
-        <div className="navbar-end">
-          {user ? (
-            <button onClick={logout} className="btn btn-error text-white">
               Log Out
             </button>
           ) : (

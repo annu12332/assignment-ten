@@ -9,7 +9,7 @@ const Add = () => {
         e.preventDefault();
         const form = e.target;
         const name = form.name.value; 
-        const category = parseInt(form.category.value); 
+        const category = (form.category.value); 
         const price = form.price.value; 
         const location = form.location.value; 
         const description = form.description.value;
@@ -24,6 +24,7 @@ const Add = () => {
             description,
             image,
             email,
+            
         }
         
         axios.post('http://localhost:3000/services',formData)
