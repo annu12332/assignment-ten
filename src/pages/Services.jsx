@@ -58,7 +58,9 @@ const Services = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 p-6 container mx-auto">
         {filteredServices.map((service) => (
-          <div
+          <div data-aos="zoom-in-up">
+
+             <div
             key={service._id}
             className="card p-4 bg-base-100 shadow-md rounded-xl hover:shadow-xl transition-all duration-300"
           >
@@ -98,6 +100,8 @@ const Services = () => {
               </div>
             </div>
           </div>
+          </div>
+         
         ))}
 
         {filteredServices.length === 0 && (
