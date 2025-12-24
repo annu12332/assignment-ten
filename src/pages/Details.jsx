@@ -20,7 +20,7 @@ const ServiceDetails = () => {
  
   useEffect(() => {
     if (!service) {
-      fetch(`http://localhost:3000/services/${id}`) // FIXED URL
+      fetch(`https://backend-ten-one.vercel.app/services/${id}`) // FIXED URL
         .then((res) => res.json())
         .then((data) => {
           setService(data);
@@ -62,7 +62,7 @@ const ServiceDetails = () => {
 
     }
 
-    axios.post('http://localhost:3000/orders', formData)
+    axios.post('https://backend-ten-one.vercel.app/orders', formData)
     .then(res=>{
 
     })

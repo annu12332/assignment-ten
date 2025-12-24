@@ -11,7 +11,7 @@ const MyAds = () => {
     useEffect(() => {
         if (!user?.email) return;
 
-        fetch(`http://localhost:3000/myads?email=${user.email}`)
+        fetch(`https://backend-ten-one.vercel.app/myads?email=${user.email}`)
             .then(res => res.json())
             .then(data => setMyAds(data))
             .catch(err => console.log(err));
@@ -19,7 +19,7 @@ const MyAds = () => {
     }, [user?.email]);
 
     const handleDelete = (id)=>{
-        axios.delete(`http://localhost:3000/delete/${id}`)
+        axios.delete(`https://backend-ten-one.vercel.app/delete/${id}`)
         .then(res=>{
             console.log(res);
 

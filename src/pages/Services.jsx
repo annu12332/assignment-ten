@@ -9,8 +9,8 @@ const Services = () => {
 
   useEffect(() => {
     const url = category
-      ? `http://localhost:3000/services?category=${category}`
-      : "http://localhost:3000/services";
+      ? `https://backend-ten-one.vercel.app/services?category=${category}`
+      : "https://backend-ten-one.vercel.app/services";
 
     fetch(url)
       .then((res) => res.json())
@@ -56,7 +56,7 @@ const Services = () => {
         />
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-6 p-6 container mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 p-6 container mx-auto">
         {filteredServices.map((service) => (
           <div
             key={service._id}
@@ -80,8 +80,8 @@ const Services = () => {
               <div className="flex justify-between items-center mt-3">
                 <div>
                   <div className="flex items-center bg-amber-200 rounded-full p-1">
-                    <span>Rating: {service.rating || 0}</span>
-                    <RiStarSFill className="ml-1 text-yellow-600" />
+                    <span> {service.category}</span>
+                    
                   </div>
                   <h4 className="font-bold bg-green-300 rounded-full p-1 mt-1">
                     Price: {service.price || 0}$

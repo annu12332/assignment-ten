@@ -5,7 +5,7 @@ const Popular = () => {
     const [services, setServices] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:3000/services?homePageLimit=6')
+        fetch('https://backend-ten-one.vercel.app/services?homePageLimit=6')
             .then(res => res.json())
             .then(data => setServices(data))
             .catch(err => console.log(err));

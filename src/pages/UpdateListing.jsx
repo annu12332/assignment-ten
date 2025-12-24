@@ -11,7 +11,7 @@ const UpdateListing = () => {
     const [category, setCategory] = useState("");
 
     useEffect(() => {
-        axios.get(`http://localhost:3000/services/${id}`)
+        axios.get(`https://backend-ten-one.vercel.app/services/${id}`)
             .then(res => {
                 const data = res.data;
 
@@ -47,7 +47,7 @@ const UpdateListing = () => {
 
         };
 
-        axios.put(`http://localhost:3000/services/${id}`, updatedData)
+        axios.put(`https://backend-ten-one.vercel.app/services/${id}`, updatedData)
             .then(res => {
                 console.log('Updated successfully', res.data);
                 alert('Listing updated successfully!');
