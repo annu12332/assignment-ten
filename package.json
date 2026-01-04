@@ -21,8 +21,11 @@
     "react-hot-toast": "^2.6.0",
     "react-icons": "^5.5.0",
     "react-router": "^7.9.6",
+    "rechart": "^0.0.1",
+    "recharts": "^3.6.0",
     "sh": "^0.0.3",
     "surge": "^0.24.6",
+    "sweetalert2": "^11.26.17",
     "tailwind": "^2.3.1",
     "ui": "^0.2.4"
   },

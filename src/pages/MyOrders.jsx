@@ -1,50 +1,55 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import jsPDF from 'jspdf';
+import { Authcontext } from "../AuthProvider";
+import { RiFileDownloadLine, RiInboxArchiveLine } from "react-icons/ri";
 
 const MyOrders = () => {
     const [myOrders, setMyOrders] = useState([]);
+    const { user } = useContext(Authcontext); // Logged in user-er info nilam
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        axios.get('https://backend-ten-one.vercel.app/orders')
-            .then(res => {
-                setMyOrders(res.data);
-            })
-    }, []);
+        if (user?.email) {
+            // Sudhu user-er email onujayi data fetch korchi (Requirement 7 & 8)
+            axios.get(`https://backend-ten-one.vercel.app/orders?email=${user.email}`)
+                .then(res => {
+                    setMyOrders(res.data);
+                    setLoading(false);
+                })
+                .catch(err => {
+                    console.error("Fetch error:", err);
+                    setLoading(false);
+                });
+        }
+    }, [user?.email]);
 
     const downloadPDF = () => {
         const doc = new jsPDF();
-        doc.setFontSize(16);
-        doc.text("My Orders Report", 14, 20);
-        doc.setFontSize(12);
-
-        let y = 35;
+        
+        // PDF Styling
+        doc.setFillColor(79, 70, 229); // Primary color theme
+        doc.rect(0, 0, 210, 30, 'F');
+        doc.setTextColor(255, 255, 255);
+        doc.setFontSize(20);
+        doc.text("PAWMART - PURCHASE REPORT", 14, 20);
+        
+        doc.setTextColor(0, 0, 0);
+        doc.setFontSize(10);
+        doc.text(`Customer: ${user?.displayName || 'User'}`, 14, 40);
+        doc.text(`Date: ${new Date().toLocaleDateString()}`, 14, 45);
+        
+        let y = 60;
+        doc.line(14, 52, 196, 52); // Border line
 
         myOrders.forEach((order, index) => {
-            doc.text(`Order No: ${index + 1}`, 14, y);
+            doc.setFont(undefined, 'bold');
+            doc.text(`${index + 1}. ${order.productName}`, 14, y);
+            doc.setFont(undefined, 'normal');
             y += 6;
-            doc.text(`Product: ${order.productName}`, 14, y);
+            doc.text(`Price: $${order.productPrice} | Qty: ${order.quantity} | Phone: ${order.phone}`, 20, y);
             y += 6;
-            doc.text(`Price: $${order.productPrice}`, 14, y);
-            y += 6;
-            doc.text(`Phone: ${order.phone}`, 14, y);
-            y += 6;
-            doc.text(`Location: ${order.address}`, 14, y);
-            y += 6;
-            doc.text(`Quantity: ${order.quantity}`, 14, y);
-            y += 6;
-
-            const dateFormatted = new Date(order.date).toLocaleString(undefined, {
-                year: 'numeric',
-                month: 'short',
-                day: 'numeric',
-                hour: 'numeric',
-                minute: 'numeric',
-                second: 'numeric',
-                hour12: true
-            });
-
-            doc.text(`Date: ${dateFormatted}`, 14, y);
+            doc.text(`Delivery Address: ${order.address}`, 20, y);
             y += 10;
 
             if (y > 270) {
@@ -53,62 +58,68 @@ const MyOrders = () => {
             }
         });
 
-        doc.save("MyOrdersReport.pdf");
+        doc.save(`Orders_Report_${user?.displayName}.pdf`);
     };
 
-    return (
-        <div>
-            <h2 className='text-2xl font-bold'>My Orders</h2>
+    if (loading) return <div className="text-center py-20"><span className="loading loading-spinner loading-lg text-primary"></span></div>;
 
-            <div className="overflow-x-auto h-96 w-full">
-                <table className="table table-xs table-pin-rows table-pin-cols">
-                    <thead>
+    return (
+        <div className="p-4 lg:p-6 bg-white rounded-3xl shadow-sm border border-base-200">
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8">
+                <div>
+                    <h2 className='text-3xl font-black text-base-content flex items-center gap-2'>
+                        <RiInboxArchiveLine className="text-primary" /> My Orders
+                    </h2>
+                    <p className="text-gray-500 text-sm">Review your purchase history and download reports.</p>
+                </div>
+
+                {myOrders.length > 0 && (
+                    <button
+                        onClick={downloadPDF}
+                        className='btn btn-primary text-white rounded-xl shadow-lg flex items-center gap-2 normal-case'>
+                        <RiFileDownloadLine className="text-xl" /> Download Report (PDF)
+                    </button>
+                )}
+            </div>
+
+            <div className="overflow-x-auto rounded-2xl border border-base-100">
+                <table className="table w-full">
+                    <thead className="bg-base-100 text-base-content">
                         <tr>
-                            <th></th>
-                            <td>Product name</td>
+                            <th className="rounded-tl-2xl">#</th>
+                            <td>Product Name</td>
                             <td>Price</td>
-                            <td>Phone</td>
-                            <td>Location</td>
                             <td>Quantity</td>
-                            <td>Date</td>
+                            <td>Location</td>
+                            <td className="rounded-tr-2xl">Date & Time</td>
                         </tr>
                     </thead>
                     <tbody>
-                        {
-                            myOrders.map((order, index) =>
-                                <tr key={index}>
+                        {myOrders.length === 0 ? (
+                            <tr>
+                                <td colSpan="6" className="text-center py-10 text-gray-400 italic">No orders found.</td>
+                            </tr>
+                        ) : (
+                            myOrders.map((order, index) => (
+                                <tr key={order._id} className="hover:bg-base-50">
                                     <th>{index + 1}</th>
-                                    <td>{order?.productName}</td>
-                                    <td>{order?.productPrice}</td>
-                                    <td>{order?.phone}</td>
-                                    <td>{order?.address}</td>
-                                    <td>{order?.quantity}</td>
+                                    <td className="font-bold text-primary">{order?.productName}</td>
+                                    <td>${order?.productPrice}</td>
                                     <td>
-                                        {new Date(order?.date).toLocaleString(undefined, {
-                                            year: 'numeric',
-                                            month: 'short',
-                                            day: 'numeric',
-                                            hour: 'numeric',
-                                            minute: 'numeric',
-                                            second: 'numeric',
-                                            hour12: true
+                                        <div className="badge badge-ghost font-mono">{order?.quantity}</div>
+                                    </td>
+                                    <td className="text-xs max-w-xs truncate">{order?.address}</td>
+                                    <td className="text-[11px] font-medium opacity-70">
+                                        {new Date(order?.date).toLocaleString('en-GB', {
+                                            day: '2-digit', month: 'short', year: 'numeric',
+                                            hour: '2-digit', minute: '2-digit', hour12: true
                                         })}
                                     </td>
                                 </tr>
-                            )
-                        }
+                            ))
+                        )}
                     </tbody>
-
                 </table>
-            </div>
-
-            {/* Download Button */}
-            <div className='text-center mt-1'>
-                <button
-                    onClick={downloadPDF}
-                    className='bg-blue-700 text-white px-6 py-3 rounded-xl hover:bg-blue-800'>
-                    Download Report
-                </button>
             </div>
         </div>
     );

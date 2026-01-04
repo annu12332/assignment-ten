@@ -4,7 +4,7 @@ import { toast } from "react-hot-toast";
 import { Authcontext } from "../AuthProvider";
 import axios from "axios";
 
-const ServiceDetails = () => {
+const Details = () => {
   const location = useLocation();
   const { id } = useParams();
   const { user } = useContext(Authcontext);
@@ -252,4 +252,4 @@ const ServiceDetails = () => {
   );
 };
 
-export default ServiceDetails;
+export default Details;
